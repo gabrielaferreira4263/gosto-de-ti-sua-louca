@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Beijo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            background-image: url('foto.jpg'); /* Certifique-se de que a imagem está na mesma pasta do index.html */
+            background-size: contain; /* Ajusta a imagem para caber dentro da tela sem ser cortada */
+            background-position: center center; /* Centraliza a imagem tanto na horizontal quanto na vertical */
+            background-repeat: no-repeat; /* Impede que a imagem se repita */
+            background-attachment: fixed; /* A imagem de fundo não se moverá ao rolar a página */
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Um fundo semitransparente para destacar o texto */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            z-index: 1; /* Garantir que a sobreposição fique acima da imagem */
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            z-index: 2; /* Garantir que o texto fique acima da sobreposição */
+        }
+        #contador {
+            font-size: 28px;
+            font-weight: bold;
+            z-index: 2; /* Garantir que o contador fique acima da sobreposição */
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <h1>Tempo que passou desde o melhor beijo da minha vida, aquele que vicia muito mais do que droga❤</h1>
+        <div id="contador"></div>
+    </div>
+
+    <script>
+        function atualizarContador() {
+            const dataPrimeiroBeijo = new Date('2025-02-14T13:15:00');
+            const agora = new Date();
+            const diferenca = agora - dataPrimeiroBeijo;
+
+            const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+            document.getElementById('contador').innerText = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+        }
+        setInterval(atualizarContador, 1000);
+        atualizarContador();
+    </script>
+</body>
+</html>
